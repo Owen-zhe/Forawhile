@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="admin/_fragments :: head(~{::title})">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<title>分类新增</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+		<link rel="stylesheet" href="../../static/css/me.css"/>
+		<link rel="stylesheet" href="../../static/lib/editMD/css/editormd.min.css">
+	</head>
+	<body>
+		<!--导航-->
+		<nav th:replace="admin/_fragments ::menu(2)">
+			<div class="ui inverted borderless menu m-padded-mini m-shadow-header">
+				
+				<div class="item m-margin-lr-large">
+					<img class="ui tiny image" src="../../static/image/truck-monster.svg" >
+					<h2 class="ui teal large header item">
+						后台管理
+					</h2>
+				</div>			
+				<a href="#" class="item m-margin-tb-large"><i class="home icon"></i>博客</a>
+				<a href="#" class="item m-margin-tb-large"><i class="th list icon"></i>分类</a>
+				<a href="#" class="item m-margin-tb-large"><i class="tags icon"></i>标签</a>
+				<div class="right menu m-margin-lr-large m-margin-tb-large">
+					<div class="ui dropdown item">
+						<div class="text">
+							<img src="https://picsum.photos/id/904/100/100" class="ui avatar image" />
+							Irivng
+						</div>
+						<i class="dropdown icon"></i>
+						<div class="menu">
+							<a href="#" class="item">注销</a>
+						</div>
+					</div>
+				</div>
+				
+				
+			</div>
+		</nav>
+		<div class="ui pointing menu m-margin-top-massive">
+			<div class="ui container">
+				<div class="right menu">
+					<a href="#" th:href="@{/admin/types/input}" class="teal active item">新增</a>
+					<a href="#" th:href="@{/admin/types}" class=" item">管理</a>
+				</div>
+				
+			</div>
+			
+		</div>
+		<!--main -->
+		<div class="m-container-small m-padded-middle m-margin-top-massive" >
+			<div class="container">
+				<form action="#" method="post" th:object="${type}" th:action="*{id}==null ? @{/admin/types} : @{/admin/types/{id}(id=*{id})}"    class="ui form">
+
+					<input type="hidden" name="id" th:value="*{id}">
+					<div class="required field">
+						<div class="ui left labeled input">
+							<label class="ui teal basic label">分类</label>
+							<input type="text" name="name" placeholder="分类名称" th:value="*{name}">
+						</div>
+					</div>
+
+					<div class="ui error message" ></div>
+
+					<div class="ui negative message" th:if="${#fields.hasErrors('name')}"  >
+						<i class="close icon"></i>
+						<div class="header">验证失败</div>
+						<p th:errors="*{name}">提交信息不符合规则</p>
+					</div>
+
+					<div class="ui right aligned container">
+						<button type="button" class="ui basic button" onclick="window.history.go(-1)">返回</button>
+						<button class="ui teal basic submit button">提交</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		
+		<!--foot -->
+		<footer  class="ui inverted vertical segment m-padded-tiny m-margin-top-mMassive">
+			<div class="ui center aligned container">
+				<div class="ui inverted divided stackable grid">
+					<div class="three wide column">						
+						 <img  src="../../static/image/Wechat.jpg" th:src="@{/image/Wechat.jpg}" class="ui centered rounded image" style="width: 110px;">
+					</div>					
+					<div class="three wide column">
+						<div class="item"></div>
+						<h4 class="ui inverted header" style="opacity: 0.8;">最新博客</h4>
+						<div class="ui inverted link list">
+							<a href="#" class="item">用户故事</a>
+							<a href="#" class="item">用户故事</a>
+							<a href="#" class="item">用户故事</a>
+						</div>
+					</div>
+					<div class="three wide column">
+						<div class="item"></div>
+						<h4 class="ui inverted header" style="opacity: 0.8;">联系我</h4>
+						<div class="ui inverted link list">
+							<a href="#" class="item">QQ：666666</a>
+							<a href="#" class="item">邮箱：forawhile@163.com</a>
+						</div>
+					</div>
+					<div class="seven wide column">
+						<div class="item"></div>
+						<h4 class="ui inverted header" style="opacity: 0.8;">最新博客</h4>
+						<p class="m-text-space m-text-opacity-mini">
+							这是我的个人博客，会分享关于编程、生活的一些小故事，感谢你们愿意花费时间来到我的小天地，希望你们在这儿可以开心
+						</p>
+					</div>
+				</div>
+				<div class="ui inverted section divider"></div>
+				<p class="m-text-space m-text-opacity-mini">Copyright © 2019 - 2020 ForaWhile Designed by ForaWhile</p>
+			</div>
+			
+		</footer>
+		<th:block th:replace="admin/_fragments :: script">
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js" ></script>
+		<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+		</th:block>
+		<script>
+			
+
+			$('.ui.dropdown').dropdown();
+			
+			$('.ui.form').form({
+				fields : {
+					name : {
+						identifier:'name',
+						rules:[{
+							type:'empty',
+							prompt: '请输入分类名称',
+						}]
+					}
+				}
+			})
+
+			//消息可关闭
+			$('.message .close')
+					.on('click', function() {
+						$(this)
+								.closest('.message')
+								.transition('fade')  //fade消失动画
+						;
+					})
+			;
+		</script>
+		
+	</body>
+</html>

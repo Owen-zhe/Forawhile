@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="_fragments :: head(~{::title})">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<title>图片</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+		<link rel="stylesheet" href="../static/css/me.css"/>
+	</head>
+	<body>
+		<!--导航-->
+		<nav th:replace="_fragments :: menu(5)">
+			<div class="ui fixed inverted borderless menu m-padded-mini m-shadow-header">
+				
+				<div class="item m-margin-lr-large">
+					<img class="ui tiny image" src="../static/image/truck-monster.svg" >
+					<h2 class="ui teal large header item">
+						ForaWhile
+					</h2>
+				</div>	
+						<!--添加链接-->
+		<a href="#" class="item m-margin-tb-large"><i class="home icon"></i><span style="font-size: 22px;font-family: 华文行楷">首页</span></a>
+		<a href="#" class="item m-margin-tb-large"><i class="th list icon"></i><span style="font-size: 22px;font-family: 华文行楷">分类</span></a>
+		<a href="#" class="item m-margin-tb-large"><i class="tags icon"></i><span style="font-size: 22px;font-family: 华文行楷">标签</span></a>
+		<a href="#" class="item m-margin-tb-large"><i class="clone icon"></i><span style="font-size: 22px;font-family: 华文行楷">归档</span></a>
+		<a href="#" class="active item m-margin-tb-large"><i class="image icon"></i><span style="font-size: 22px;font-family: 华文行楷">照片</span></a>
+		<a href="#" class=" item m-margin-tb-large"><i class="male icon"></i><span style="font-size: 22px;font-family: 华文行楷">关于我</span></a>
+				<div class="right item m-margin-lr-large">
+					<div class="ui icon transparent input">
+						<input type="text" placeholder="search...">
+						<i class="search inverted icon"></i>
+					</div>
+				</div>
+			</div>
+		</nav>		
+		
+		<!--main-->
+		<div class=" m-padded-middle m-margin-top-massive">
+			<div class="ui container">
+				<div class="ui centered three column grid">
+					<div class="centered row">
+						<div class="column">
+							<!--搜索-->
+							<div class="ui right labeled left icon input">
+							  <i class="tags icon"></i>
+							  <input type="text" placeholder="输入标签">
+							  <a class="ui tag label">
+							    搜索
+							  </a>
+							</div>
+						</div>
+						<div class="column"></div>
+						<div class="column">
+							<!--上传图片-->
+							<div class="ui labeled icon button" onclick="show_import_photo()">
+								上传图片
+								<i class="plus icon"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!--第一层-->
+				<div class="ui three column grid">
+				  <div class="column">
+				    <div class="ui segment">
+				      <!--图片-->
+					  
+					  <!--图片显示-->
+					  <div class="ui img card" id="123acard">
+					  	<!--显示日期-->
+					    <div class="content">
+					  	  <div class="right floated meta">2020-06-30</div>
+					    </div>
+					    <!--显示图片-->
+					    <div class="image">
+					  	  <img src="../static/image/xisi.jpg" th:src="@{/image/xisi.jpg}">
+					    </div>
+					    <!--显示点赞 收藏 添加标签 删除-->
+					    <div class="content">
+					  	  <span class="right floated">
+					  		  <div class="ui mini basic icon buttons">
+					  			  <button class="ui star outline button" data-tooltip="收藏" data-position="top left" id="123a" onclick="change_photo_star_button(this.id)"><i class="star outline icon" id="123aicon"></i></button>
+					  			  <button class="ui tags button" data-tooltip="标签" data-position="top center" onclick="show_photo_tags('123atags')"><i class="tags icon"></i></button>
+					  			  <button class="ui delete button" data-tooltip="删除" data-position="top right" onclick="confirm_delete_photo('123a')"><i class="trash alternate icon"></i></button>
+					  		  </div>
+					  	  </span>
+					  	  <span class="left floated">
+					  		<i class="heart outline like icon"></i>
+					  		32 likes
+					  	  </span>
+					     </div>	
+					  	<!--显示标签-->
+					  	<div>
+					  		<div class="ui tags ">
+					  			<div class="ui tag labels hidden " id="123atags">
+					  				<a class="ui label ">电影明星</a>
+					  				<a class="ui label">希斯</a>
+					  				<a class="ui label">希斯</a>
+					  				<a class="ui label">希斯</a>
+					  			</div>
+					  		</div>	
+					  	</div>
+					  </div>
+					  
+					
+				    </div>
+				  </div>
+				  <div class="column">
+				    <div class="ui segment">
+				     
+					 <!--图片显示-->
+					 <div class="ui img card" id="123bcard">
+					 	<!--显示日期-->
+					   <div class="content">
+					 	  <div class="right floated meta">2020-06-30</div>
+					   </div>
+					   <!--显示图片-->
+					   <div class="image">
+					 	  <img src="../static/image/xisi.jpg" th:src="@{/image/xisi.jpg}">
+					   </div>
+					   <!--显示点赞 收藏 添加标签 删除-->
+					   <div class="content">
+					 	  <span class="right floated">
+					 		  <div class="ui mini basic icon buttons">
+					 			  <button class="ui star outline button" data-tooltip="收藏" data-position="top left" id="123b" onclick="change_photo_star_button(this.id)"><i class="star outline icon" id="123bicon"></i></button>
+					 			  <button class="ui tags button" data-tooltip="标签" data-position="top center" onclick="show_photo_tags('123btags')"><i class="tags icon"></i></button>
+					 			  <button class="ui delete button" data-tooltip="删除" data-position="top right" onclick="confirm_delete_photo('123b')"><i class="trash alternate icon"></i></button>
+					 		  </div>
+					 	  </span>
+					 	  <span class="left floated">
+					 		<i class="heart outline like icon"></i>
+					 		32 likes
+					 	  </span>
+					    </div>	
+					 	<!--显示标签-->
+					 	<div>
+					 		<div class="ui tags ">
+					 			<div class="ui tag labels hidden animate__animated animate__slideInDown" id="123btags">
+					 				<a class="ui label ">电影明星</a>
+					 				<a class="ui label ">希斯</a>
+					 				<a class="ui label ">希斯</a>
+					 				<a class="ui label ">希斯</a>
+					 			</div>
+					 		</div>	
+					 	</div>
+					 </div>
+					 
+					 
+				    </div>
+				  </div>
+				  <div class="column">
+				    <div class="ui segment">
+				      
+					  <!--图片显示-->
+					  <div class="ui img card" id="123ccard">
+					  	<!--显示日期-->
+					    <div class="content">
+					  	  <div class="right floated meta">2020-06-30</div>
+					    </div>
+					    <!--显示图片-->
+					    <div class="image">
+					  	  <img src="../static/image/xisi.jpg" th:src="@{/image/xisi.jpg}">
+					    </div>
+					    <!--显示点赞 收藏 添加标签 删除-->
+					    <div class="content">
+					  	  <span class="right floated">
+					  		  <div class="ui mini basic icon buttons">
+					  			  <button class="ui star outline button" data-tooltip="收藏" data-position="top left" id="123c" onclick="change_photo_star_button(this.id)"><i class="star outline icon" id="123cicon"></i></button>
+					  			  <button class="ui tags button" data-tooltip="标签" data-position="top center" onclick="show_photo_tags('123ctags')"><i class="tags icon"></i></button>
+					  			  <button class="ui delete button" data-tooltip="删除" data-position="top right" onclick="confirm_delete_photo('123c')"><i class="trash alternate icon"></i></button>
+					  		  </div>
+					  	  </span>
+					  	  <span class="left floated">
+					  		<i class="heart outline like icon"></i>
+					  		32 likes
+					  	  </span>
+					     </div>	
+					  	<!--显示标签-->
+					  	<div>
+					  		<div class="ui tags">
+					  			<div class="ui tag labels hidden" id="123ctags">
+					  				<a class="ui label">电影明星</a>
+					  				<a class="ui label">希斯</a>
+					  				<a class="ui label">希斯</a>
+					  				<a class="ui label">希斯</a>
+					  			</div>
+					  		</div>	
+					  	</div>
+					  </div>
+					  
+				    </div>
+				  </div>
+				</div>
+				
+				<!--第二层-->
+				<div class="ui three column grid">
+				<div class="column">
+				    <div class="ui segment">
+				      <!--图片-->
+					  
+					  <!--图片显示-->
+					  <div class="ui img card" id="123dcard">
+					  	<!--显示日期-->
+					    <div class="content">
+					  	  <div class="right floated meta">2020-06-30</div>
+					    </div>
+					    <!--显示图片-->
+					    <div class="image">
+					  	  <img src="../static/image/xisi.jpg" th:src="@{/image/xisi.jpg}">
+					    </div>
+					    <!--显示点赞 收藏 添加标签 删除-->
+					    <div class="content">
+					  	  <span class="right floated">
+					  		  <div class="ui mini basic icon buttons">
+					  			  <button class="ui star outline button" data-tooltip="收藏" data-position="top left" id="123d" onclick="change_photo_star_button(this.id)"><i class="star outline icon" id="123dicon"></i></button>
+					  			  <button class="ui tags button" data-tooltip="标签" data-position="top center" onclick="show_photo_tags('123dtags')"><i class="tags icon"></i></button>
+					  			  <button class="ui delete button" data-tooltip="删除" data-position="top right" onclick="confirm_delete_photo('123d')"><i class="trash alternate icon"></i></button>
+					  		  </div>
+					  	  </span>
+					  	  <span class="left floated">
+					  		<i class="heart outline like icon"></i>
+					  		32 likes
+					  	  </span>
+					     </div>	
+					  	<!--显示标签-->
+					  	<div>
+					  		<div class="ui tags">
+					  			<div class="ui tag labels hidden" id="123dtags">
+					  				<a class="ui label">电影明星</a>
+					  				<a class="ui label">希斯</a>
+					  				<a class="ui label">希斯</a>
+					  				<a class="ui label">希斯</a>
+					  			</div>
+					  		</div>	
+					  	</div>
+					  </div>
+					  
+					
+				    </div>
+				  </div>
+				  <div class="column">
+				    <div class="ui segment">
+				     
+					 <!--图片显示-->
+					 <div class="ui img card" id="123ecard">
+					 	<!--显示日期-->
+					   <div class="content">
+					 	  <div class="right floated meta">2020-06-30</div>
+					   </div>
+					   <!--显示图片-->
+					   <div class="image">
+					 	  <img src="../static/image/xisi.jpg" th:src="@{/image/xisi.jpg}">
+					   </div>
+					   <!--显示点赞 收藏 添加标签 删除-->
+					   <div class="content">
+					 	  <span class="right floated">
+					 		  <div class="ui mini basic icon buttons">
+					 			  <button class="ui star outline button" data-tooltip="收藏" data-position="top left" id="123e" onclick="change_photo_star_button(this.id)"><i class="star outline icon" id="123eicon"></i></button>
+					 			  <button class="ui tags button" data-tooltip="标签" data-position="top center" onclick="show_photo_tags('123etags')"><i class="tags icon"></i></button>
+					 			  <button class="ui delete button" data-tooltip="删除" data-position="top right" onclick="confirm_delete_photo('123e')"><i class="trash alternate icon"></i></button>
+					 		  </div>
+					 	  </span>
+					 	  <span class="left floated">
+					 		<i class="heart outline like icon"></i>
+					 		32 likes
+					 	  </span>
+					    </div>	
+					 	<!--显示标签-->
+					 	<div>
+					 		<div class="ui tags">
+					 			<div class="ui tag labels hidden" id="123etags">
+					 				<a class="ui label">电影明星</a>
+					 				<a class="ui label">希斯</a>
+					 				<a class="ui label">希斯</a>
+					 				<a class="ui label">希斯</a>
+					 			</div>
+					 		</div>	
+					 	</div>
+					 </div>
+					 
+					 
+				    </div>
+				  </div>
+				  <div class="column">
+				    <div class="ui segment">
+				      
+					  <!--图片显示-->
+					  <div class="ui img card" id="123fcard">
+					  	<!--显示日期-->
+					    <div class="content">
+					  	  <div class="right floated meta">2020-06-30</div>
+					    </div>
+					    <!--显示图片-->
+					    <div class="image">
+					  	  <img src="../static/image/xisi.jpg" th:src="@{/image/xisi.jpg}">
+					    </div>
+					    <!--显示点赞 收藏 添加标签 删除-->
+					    <div class="content">
+					  	  <span class="right floated">
+					  		  <div class="ui mini basic icon buttons">
+					  			  <button class="ui star outline button" data-tooltip="收藏" data-position="top left" id="123f" onclick="change_photo_star_button(this.id)"><i class="star outline icon" id="123ficon"></i></button>
+					  			  <button class="ui tags button" data-tooltip="标签" data-position="top center" onclick="show_photo_tags('123ftags')"><i class="tags icon"></i></button>
+					  			  <button class="ui delete button" data-tooltip="删除" data-position="top right" onclick="confirm_delete_photo('123f')"><i class="trash alternate icon"></i></button>
+					  		  </div>
+					  	  </span>
+					  	  <span class="left floated">
+					  		<i class="heart outline like icon"></i>
+					  		32 likes
+					  	  </span>
+					     </div>	
+					  	<!--显示标签-->
+					  	<div>
+					  		<div class="ui tags">
+					  			<div class="ui tag labels hidden" id="123ftags">
+					  				<a class="ui label">电影明星</a>
+					  				<a class="ui label">希斯</a>
+					  				<a class="ui label">希斯</a>
+					  				<a class="ui label">希斯</a>
+					  			</div>
+					  		</div>	
+					  	</div>
+					  </div>
+					  
+				    </div>
+				  </div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<!--foot -->
+		<footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tiny m-margin-top-middle">
+			<div class="ui center aligned container">
+				<div class="ui inverted divided stackable grid">
+					<div class="three wide column">						
+						 <img  src="static/image/Wechat.jpg" class="ui centered rounded image" style="width: 110px;">
+					</div>					
+					<div class="three wide column">
+						<div class="item"></div>
+						<h4 class="ui inverted header" style="opacity: 0.8;">最新博客</h4>
+						<div class="ui inverted link list">
+							<a href="#" class="item">用户故事</a>
+							<a href="#" class="item">用户故事</a>
+							<a href="#" class="item">用户故事</a>
+						</div>
+					</div>
+					<div class="three wide column">
+						<div class="item"></div>
+						<h4 class="ui inverted header" style="opacity: 0.8;">联系我</h4>
+						<div class="ui inverted link list">
+							<a href="#" class="item">QQ：666666</a>
+							<a href="#" class="item">邮箱：forawhile@163.com</a>
+						</div>
+					</div>
+					<div class="seven wide column">
+						<div class="item"></div>
+						<h4 class="ui inverted header" style="opacity: 0.8;">最新博客</h4>
+						<p class="m-text-space m-text-opacity-mini">
+							这是我的个人博客，会分享关于编程、生活的一些小故事，感谢你们愿意花费时间来到我的小天地，希望你们在这儿可以开心
+						</p>
+					</div>
+				</div>
+				<div class="ui inverted section divider"></div>
+				<p class="m-text-space m-text-opacity-mini">Copyright © 2019 - 2020 ForaWhile Designed by ForaWhile</p>
+			</div>
+		</footer>
+				
+		<!--模态框-->	
+			
+		<!--删除图片的模态框-->
+		<div class="ui mini delete basic modal" id="photo_delete_modal">
+			<div class="ui icon header">
+				<i class="trash icon"></i>
+				是否删除照片
+			</div>
+			<div class="content">
+				<p id="photo_delete_info">是否删除id：XXX的照片</p>
+			</div>
+			<div class="actions">
+				<div class="ui green basic cancel inverted button">
+					<i class="remove icon"></i>
+					否
+				</div>
+				<div class="ui red ok inverted button" onclick="remove_photo(document.getElementById('photo_delete_modal').value)">
+					<i class="checkmark icon"></i>
+					是
+				</div>
+			</div>
+		</div>	
+			
+		<!--上传图片的模态框-->
+		<div class="ui import basic modal" id="photo_import_modal">
+		 <div class="header">上传图片</div>
+		 <div class="content">
+			 <form class="ui form">
+				 <div class="field">
+					 <label class="ui black label">选择图片</label>
+					 <div class="ui input">
+						 <input type="text" name="add_photo_pathname" id="add_photo_pathid" placeholder="选择图片文件">
+						 <button class="ui teal right labeled icon button" onclick="add_photo_button_fun()">
+							 <i class="file icon"></i>
+							 选择图片
+							 <input type="file"
+							 name="add_photo_buttonname" 
+							 id="add_photo_buttonid"
+							 accept="image/jpeg,image/png"
+							 style="left:-9999px;position:absolute;">
+						 </button>
+					 </div>
+				 </div>
+				 <!--标签输入-->
+				<div class="four fields">
+					<div class="field">
+						<label class="ui black label">添加标签1</label>
+						<input type="text" name="add_tag1" id="add_tag1" placeholder="标签1">
+					</div>
+					<div class="field">
+						<label class="ui black label">添加标签2</label>
+						<input type="text" name="add_tag2" id="add_tag2" placeholder="标签2">
+					</div>
+					<div class="field">
+						<label class="ui black label">添加标签3</label>
+						<input type="text" name="add_tag3" id="add_tag3" placeholder="标签3">
+					</div>
+					<div class="field">
+						<label class="ui black label">添加标签4</label>
+						<input type="text" name="add_tag4" id="add_tag4" placeholder="标签4">
+					</div>
+				</div>
+			 </form>
+		 </div>
+		 <div class="center actions">
+			 <div class="ui inverted red right labeled icon deny button">
+				 取消
+				 <i class="x icon"></i>
+			 </div>
+			 <div class="ui inverted blue right labeled icon button">				 
+				 预览
+				 <i class="eye icon"></i>
+			 </div>
+			 <div class="ui inverted green right labeled icon positive button">
+				 确定
+				 <i class="checkmark icon"></i>
+			 </div>
+			 
+		 </div>
+		</div>		
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js" ></script>
+		<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+		<script src="../static/js/photo_function.js" th:src="@{/js/photo_function.js}"></script>
+		<script type="text/javascript">
+			$('.mini.delete.modal').modal({
+				closable:false
+			});
+			$('.ui.import.basic.modal').modal({
+				closable:false
+			});
+			
+		</script>
+	</body>
+</html>

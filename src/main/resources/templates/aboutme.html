@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="_fragments :: head(~{::title})">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<title>关于我</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+		<link rel="stylesheet" href="../static/css/me.css"/>
+	</head>
+	<body>
+		<!--导航-->
+		<nav th:replace="_fragments :: menu(6)">
+			<div class="ui fixed inverted borderless menu m-padded-mini m-shadow-header">
+				
+				<div class="item m-margin-lr-large">
+					<img class="ui tiny image" src="../static/image/truck-monster.svg" >
+					<h2 class="ui teal large header item">
+						ForaWhile
+					</h2>
+				</div>			
+				<a href="#" class="item m-margin-tb-large"><i class="home icon"></i><span style="font-size: 22px;font-family: 华文行楷">首页</span></a>
+				<a href="#" class="item m-margin-tb-large"><i class="th list icon"></i><span style="font-size: 22px;font-family: 华文行楷">分类</span></a>
+				<a href="#" class="item m-margin-tb-large"><i class="tags icon"></i><span style="font-size: 22px;font-family: 华文行楷">标签</span></a>
+				<a href="#" class="item m-margin-tb-large"><i class="clone icon"></i><span style="font-size: 22px;font-family: 华文行楷">归档</span></a>
+				<a href="#" class="item m-margin-tb-large"><i class="image icon"></i><span style="font-size: 22px;font-family: 华文行楷">照片</span></a>
+				<a href="#" class="active item m-margin-tb-large"><i class="male icon"></i><span style="font-size: 22px;font-family: 华文行楷">关于我</span></a>
+				<div class="right item">
+					<div class="ui icon transparent input m-margin-lr-large">
+						<input type="text" placeholder="search...">
+						<i class="search inverted icon"></i>
+					</div>
+				</div>
+				
+			</div>
+		</nav>		
+		<!--main -->
+		<div class=" m-padded-middle m-margin-top-massive ">			
+			<div class="ui container">
+				<div class="ui stackable grid">
+					<div class="twelve wide column">
+						<div class="ui segment">
+							<img src="https://picsum.photos/id/1004/800/460" alt="" class="ui rounded image"/>
+						</div>
+						
+					</div>
+					<div class="three wide column">
+						<div class="ui top attached segment">
+							<div class="ui header">关于我们</div>
+						</div>
+						<div class="ui attached segment">
+							<p class="m-text-space m-text-opacity-mini">ForaWhile，一群志同道合的小伙伴组建的，徜徉在天南海北的小团队。希望可以结识更多一起快乐学习玩耍的小伙伴。</p>
+						</div>
+						<div class="ui attached segment">
+							<div class="ui red basic label m-margin-mini">编程</div>
+							<div class="ui orange basic label m-margin-mini">运动</div>
+							<div class="ui yellow basic label m-margin-mini">美食</div>
+							<div class="ui green basic label m-margin-mini">旅游</div>
+						</div>
+						<div class="ui bottom attached segment">
+							<a href="#" class="ui circular icon button"><i class="github icon"></i></a>
+							<a href="#" class="ui wechat circular icon button"><i class="wechat icon"></i></a>
+							<a href="#" class="ui qq circular icon button" data-content="666666" data-position="bottom center"><i class="qq icon"></i></a>
+						</div>
+						<div class="ui wechatQR flowing popup transition hidden">
+							<img src="../static/image/Wechat.jpg" th:src="@{/image/Wechat.jpg}" alt="" class="ui rounded image" width="110px"/>
+						</div>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+		
+		<!--foot -->
+		<footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tiny m-margin-top-middle">
+			<div class="ui center aligned container">
+				<div class="ui inverted divided stackable grid">
+					<div class="three wide column">						
+						 <img  src="../static/image/Wechat.jpg" class="ui centered rounded image" style="width: 110px;">
+					</div>					
+					<div class="three wide column">
+						<div class="item"></div>
+						<h4 class="ui inverted header" style="opacity: 0.8;">最新博客</h4>
+						<div class="ui inverted link list">
+							<a href="#" class="item">用户故事</a>
+							<a href="#" class="item">用户故事</a>
+							<a href="#" class="item">用户故事</a>
+						</div>
+					</div>
+					<div class="three wide column">
+						<div class="item"></div>
+						<h4 class="ui inverted header" style="opacity: 0.8;">联系我</h4>
+						<div class="ui inverted link list">
+							<a href="#" class="item">QQ：666666</a>
+							<a href="#" class="item">邮箱：forawhile@163.com</a>
+						</div>
+					</div>
+					<div class="seven wide column">
+						<div class="item"></div>
+						<h4 class="ui inverted header" style="opacity: 0.8;">最新博客</h4>
+						<p class="m-text-space m-text-opacity-mini">
+							这是我的个人博客，会分享关于编程、生活的一些小故事，感谢你们愿意花费时间来到我的小天地，希望你们在这儿可以开心
+						</p>
+					</div>
+				</div>
+				<div class="ui inverted section divider"></div>
+				<p class="m-text-space m-text-opacity-mini">Copyright © 2019 - 2020 ForaWhile Designed by ForaWhile</p>
+			</div>
+			
+		</footer>
+		<th:block th:replace="_fragments :: script">
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js" ></script>
+		<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+		</th:block>
+		<script>
+			$('.qq').popup();
+			
+			$('.wechat.button').popup({
+					popup: $('.wechatQR.popup'),      //第一类索引为对象,第二类索引为格式(也可DIY)
+					position: 'bottom center'
+				})
+			
+		</script>
+	</body>
+</html>
